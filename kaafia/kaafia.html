@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Final Project</title>
+<style>
+/* ===== Internal CSS ===== */
+* {margin:0;padding:0;box-sizing:border-box;font-family: Arial, sans-serif;}
+body {background:#0f172a;color:#e5e7eb;line-height:1.6;}
+header {background:linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);padding:20px;text-align:center;position:sticky;top:0;z-index:1000;box-shadow:0 4px 6px rgba(0,0,0,0.3);}
+nav a {color:#fff;margin:0 15px;text-decoration:none;font-weight:bold;transition:0.3s;}
+nav a:hover {color:#ffcccc;}
+.card {background:#111827;margin:20px auto;padding:30px;border-radius:12px;max-width:1200px;box-shadow:0 8px 15px rgba(0,0,0,0.3);}
+h2 {color:#ff6b6b;margin-bottom:20px;font-size:28px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
+h1 {color:#fff;margin-bottom:10px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
+button {padding:12px 24px;border:none;border-radius:8px;background:linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);color:#fff;cursor:pointer;transition:all 0.3s;font-weight:bold;margin:5px;box-shadow:0 4px 6px rgba(0,0,0,0.2);}
+button:hover {background:linear-gradient(135deg, #ee5a6f 0%, #ff4757 100%);transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.3);}
+button:active {transform:translateY(0);}
+input {padding:10px;width:100%;margin:10px 0;border-radius:8px;border:none;background-color: #334155; color: #e5e7eb;}
+img {width:180px;border-radius:50%;margin-bottom:15px;}
+footer {background:#020617;text-align:center;padding:20px;}
+.hidden {display:none;}
+ul {list-style-type: none; padding: 0;}
+li {padding: 8px 0; border-bottom: 1px solid #334155;}
+li:last-child {border-bottom: none;}
+.example-card, .dom-example, .event-example {transition: all 0.3s ease; animation: fadeIn 0.5s ease-in;}
+.example-card:hover, .dom-example:hover, .event-example:hover {transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.4) !important;}
+#out7, #domListExamples, #eventOutList {margin-top: 20px;}
+@keyframes fadeIn {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}
+@keyframes pulse {0%, 100% {transform: scale(1);} 50% {transform: scale(1.05);}}
+@keyframes shimmer {0% {background-position: -1000px 0;} 100% {background-position: 1000px 0;}}
+</style>
+</head>
+<body>
+<header>
+  <h1>JavaScript Final Project</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#ch7">Chapter 7</a>
+    <a href="#ch8">Chapter 8</a>
+    <a href="#ch9">Chapter 9</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="card">
+    <h2>Welcome</h2>
+    <p>This is the JavaScript Final Project. Use the chapters to explore examples.</p>
+  </section>
+
+  <!-- CHAPTER 7 -->
+  <section id="ch7" class="card hidden">
+    <h2>Chapter 7 – Objects Examples (25 Examples)</h2>
+    <p style="color:#cbd5e1;margin-bottom:15px;">Click the button below to see 25 beautiful object examples with gradient backgrounds and animations.</p>
+    <button onclick="ch7Example()">🚀 Run Chapter 7 Examples</button>
+    <ul id="out7"></ul>
+  </section>
+
+  <!-- CHAPTER 8 -->
+  <section id="ch8" class="card hidden">
+    <h2>Chapter 8 – DOM Manipulation Examples (25 Examples)</h2>
+    <p id="domText" style="color:#cbd5e1;margin-bottom:15px;">Halkan waxaan ku arki doonaa tusaalooyinka DOM manipulation.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px;">
+      <button id="changeTextBtn">📝 Change Text</button>
+      <button id="addListItemBtn">➕ Add List Item</button>
+      <button id="removeFirstItemBtn">➖ Remove First Item</button>
+      <button id="toggleColorBtn">🎨 Toggle Background</button>
+      <button onclick="ch8Example()">🔄 Reset DOM Examples</button>
+    </div>
+    <ul id="domListExamples">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+  </section>
+
+  <!-- CHAPTER 9 -->
+  <section id="ch9" class="card hidden">
+    <h2>Chapter 9 – Events Examples (25 Examples)</h2>
+    <p style="color:#cbd5e1;margin-bottom:15px;">Click the button below to see 25 beautiful event examples, then interact with them!</p>
+    <button onclick="ch9Example()">🚀 Run Chapter 9 Examples</button>
+    <form id="myForm" style="margin-bottom:15px;">
+      <input type="text" id="username" placeholder="Gali magacaaga">
+      <button type="submit">✅ Submit</button>
+    </form>
+    <button id="eventClickMeBtn">👆 Click Me (Event Listener)</button>
+    <p id="hoverArea" style="padding:15px;background:linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);border-radius:10px;color:#fff;cursor:pointer;margin:15px 0;transition:all 0.3s;">Ku dul mari jiirka halkan! (Hover over me!)</p>
+    <input type="text" id="keyInput" placeholder="Ku qor wax halkan (Type here for key events)">
+    <ul id="eventOutList"></ul>
+  </section>
+ 
+  <!-- ABOUT -->
+  <section id="about" class="card hidden">
+    <h2>About Me</h2>
+    <img src="kaafia.jpeg" alt="Profile Picture">
+    <ul>
+      <li><b>Name:</b> Kaafia Abdullahi Bulle</li>
+      <li><b>ID:</b> c5240073</li>
+      <li><b>Email:</b> Kaafiyaabdullahi1@gmail.com</li>
+      <li><b>University:</b> Jamhuuriya University</li>
+      <li><b>Class:</b> cm241</li>
+      <li><b>Skills:</b> Photo editing, Problem solving, Graphic design</li>
+    </ul>
+    <p><b>References:</b></p>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">MDN Web Docs</a></li>
+      <li><a href="https://www.w3schools.com/js/" target="_blank">W3Schools JavaScript</a></li>
+     <li><a href="http://www.javacoffeegarden.com/" target="_blank">Java Coffee Garden</a></li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="card hidden">
+    <h2>Contact Us</h2>
+    <p style="color:#cbd5e1;margin-bottom:15px;">
+      Haddii aad qabto su'aalo ama faallo ku saabsan project-kan, fadlan buuxi foomkan hoose.
+    </p>
+    <form id="contactForm">
+      <input type="text" id="contactName" placeholder="Magacaaga" required>
+      <input type="email" id="contactEmail" placeholder="Email-kaaga" required>
+      <textarea id="contactMessage" placeholder="Fariintaada" rows="4" style="padding:10px;width:100%;margin:10px 0;border-radius:8px;border:none;background-color:#334155;color:#e5e7eb;resize:vertical;" required></textarea>
+      <button type="submit">✉️ Send Message</button>
+    </form>
+    <p id="contactStatus" style="margin-top:10px;color:#bbf7d0;"></p>
+  </section>
+</main>
+
+<footer>
+  <p>JavaScript Final Project © 2026</p>
+</footer>
+
+<script src="kaafia.js"></script>
+<script>
+// ===== Navigation show/hide logic =====
+const sections = document.querySelectorAll("main > section");
+const navLinks = document.querySelectorAll("nav a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", function(e){
+    e.preventDefault();
+    const targetId = this.getAttribute("href").substring(1);
+
+    // Hide all sections first
+    sections.forEach(sec => sec.classList.add("hidden"));
+
+    // Show the target section
+    const targetSection = document.getElementById(targetId);
+    if(targetSection) {
+      targetSection.classList.remove("hidden");
+    } else {
+        // If targetId is 'home' and no specific section for it, show the default home.
+        document.getElementById("home").classList.remove("hidden");
+    }
+  });
+});
+
+// Optionally, show the home section by default when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("home").classList.remove("hidden");
+
+    // Simple "fake" submit handler for contact form (no backend)
+    const contactForm = document.getElementById("contactForm");
+    const contactStatus = document.getElementById("contactStatus");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            contactStatus.textContent = "Mahadsanid! Fariintaada waa la diiwaangeliyey (demo only, no real email).";
+            contactForm.reset();
+        });
+    }
+});
+</script>
+</body>
+</html>
